@@ -4,105 +4,405 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vibu Web Studio | Hotel & Restaurant Websites</title>
-<meta name="description" content="Vibu Web Studio creates affordable, modern and mobile-friendly websites for hotels, restaurants and cafés.">
+<meta name="description" content="Vibu Web Studio creates clean, modern and mobile-friendly websites for hotels, restaurants and cafés.">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;color:#202020;background:#fff;line-height:1.6}
-a{text-decoration:none;color:inherit}.nav{position:fixed;z-index:50;top:0;left:0;right:0;background:rgba(10,10,10,.94);color:#fff;padding:14px 7%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:800;font-size:21px}.logo span{display:block;font-size:11px;color:#d9ad60;letter-spacing:2px}
-.links{display:flex;gap:24px;font-size:14px}.links a:hover{color:#d9ad60}
-.hero{min-height:92vh;padding:135px 7% 80px;color:#fff;display:flex;align-items:center;background:linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.42)),url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=85') center/cover}
-.hero-content{max-width:760px}.eyebrow{color:#e2b866;text-transform:uppercase;letter-spacing:3px;font-size:13px;font-weight:bold}
-h1{font-size:clamp(42px,7vw,76px);line-height:1.05;margin:14px 0}.hero p{font-size:19px;color:#eee;max-width:650px}
-.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-block;padding:13px 22px;border-radius:7px;font-weight:700}.primary{background:#d7aa5c;color:#111}.outline{border:1px solid #fff;color:#fff}
-section{padding:78px 7%}.head{text-align:center;max-width:700px;margin:0 auto 42px}.head h2{font-size:38px;margin-bottom:8px}.head p{color:#666}
-.features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.feature{padding:25px;border:1px solid #eee;border-radius:13px;box-shadow:0 6px 22px rgba(0,0,0,.05)}.icon{font-size:30px;margin-bottom:8px}.feature p{color:#666;font-size:14px}
-.about{background:#faf8f4}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}.about img{width:100%;height:380px;object-fit:cover;border-radius:15px}.about h2{font-size:37px;margin-bottom:15px}.checks{margin-top:18px;display:grid;gap:8px;font-weight:600}
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}.project{border:1px solid #eee;border-radius:14px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.07)}.project img{width:100%;height:260px;object-fit:cover}.project-body{padding:23px}.badge{display:inline-block;background:#f5ead6;padding:5px 9px;border-radius:20px;font-size:12px;margin-bottom:10px}.project-body p{color:#666;margin:7px 0 16px}
-.process{background:#faf8f4}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.step{background:#fff;padding:25px;border-radius:13px;border:1px solid #eee}.num{font-size:27px;font-weight:800;color:#b78331}
-.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.plan{border:1px solid #e5e5e5;border-radius:14px;padding:28px}.plan.featured{border:2px solid #c4944a}.plan h3{font-size:23px}.amount{font-size:31px;font-weight:800;margin:12px 0;color:#a87520}.plan ul{list-style:none;color:#555;display:grid;gap:8px;margin-bottom:20px}
-.contact{background:#141414;color:#fff}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}.contact p{color:#ccc;margin:8px 0}.contact-card{background:#fff;color:#222;padding:25px;border-radius:13px}.contact-card input,.contact-card textarea{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:7px}.contact-card button{width:100%;border:0;cursor:pointer;margin-top:8px}
-footer{background:#090909;color:#999;text-align:center;padding:23px;font-size:13px}.whatsapp{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:27px;box-shadow:0 5px 18px rgba(0,0,0,.25)}
-@media(max-width:850px){.links{gap:11px;font-size:12px}.nav{padding:12px 5%}.hero{padding-left:5%;padding-right:5%}section{padding:58px 5%}.features,.steps{grid-template-columns:1fr 1fr}.about-grid,.contact-grid{grid-template-columns:1fr}.projects,.pricing{grid-template-columns:1fr}}
-@media(max-width:520px){.links a:nth-child(1),.links a:nth-child(2){display:none}.features,.steps{grid-template-columns:1fr}}
+:root{
+  --ink:#17212b;
+  --muted:#66717c;
+  --cream:#f7f5f0;
+  --white:#fff;
+  --line:#e8e5df;
+  --accent:#b4874b;
+  --accent-dark:#8d6839;
+  --soft:#f1eee8;
+  --shadow:0 18px 50px rgba(23,33,43,.09);
+  --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+.container{width:min(1120px,92%);margin:auto}
+
+/* NAV */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(232,229,223,.8);
+}
+.nav{
+  min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px
+}
+.brand{font-weight:800;letter-spacing:1.5px;font-size:18px}
+.brand span{display:block;color:var(--accent);font-size:10px;letter-spacing:2.4px;margin-top:1px}
+nav{display:flex;gap:26px;align-items:center}
+nav a{font-size:14px;color:#4f5962;font-weight:600}
+nav a:hover{color:var(--accent-dark)}
+.nav-cta{
+  background:var(--ink);color:#fff!important;padding:10px 16px;border-radius:999px
+}
+.nav-cta:hover{background:var(--accent-dark)}
+
+/* HERO */
+.hero{background:var(--cream);padding:78px 0 70px}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:58px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  color:var(--accent-dark);font-size:12px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;
+  margin-bottom:18px
+}
+.eyebrow:before{content:"";width:28px;height:1px;background:var(--accent)}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,5vw,68px);line-height:1.04;letter-spacing:-1.5px;max-width:650px}
+.hero-copy p{font-size:18px;color:var(--muted);max-width:590px;margin:22px 0 30px}
+.buttons{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 21px;border-radius:999px;font-weight:800;font-size:14px;transition:.2s}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);background:var(--accent-dark)}
+.btn-outline{border:1px solid #cfc9bf;background:#fff}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent-dark)}
+.hero-photo{
+  height:480px;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);position:relative
+}
+.hero-photo img{height:100%}
+.hero-photo:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.18))
+}
+.photo-label{
+  position:absolute;z-index:2;left:22px;bottom:22px;background:rgba(255,255,255,.94);
+  padding:12px 15px;border-radius:14px;font-size:12px;font-weight:800
+}
+
+/* SECTIONS */
+section{padding:88px 0}
+.section-head{max-width:680px;margin-bottom:38px}
+.kicker{color:var(--accent-dark);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:42px;line-height:1.1;margin:9px 0 12px}
+.section-head p{color:var(--muted);font-size:16px}
+
+/* OFFER */
+.offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:#fff;
+  transition:.22s;box-shadow:0 5px 22px rgba(23,33,43,.035)
+}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#ddd5c9}
+.icon{font-size:27px;margin-bottom:20px}
+.card h3{font-family:Georgia,"Times New Roman",serif;font-size:23px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:14px}
+
+/* FEATURE */
+.feature{background:var(--ink);color:#fff}
+.feature-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:58px;align-items:center}
+.feature-photo{height:480px;border-radius:25px;overflow:hidden}
+.feature-photo img{height:100%}
+.feature h2{color:#fff}
+.feature p{color:#cbd0d5;margin:14px 0 24px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check{color:#e9ecef;font-size:14px}
+.check b{color:#d6b27c;margin-right:8px}
+
+/* WORK */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.project{border:1px solid var(--line);border-radius:25px;overflow:hidden;background:#fff;box-shadow:0 7px 25px rgba(23,33,43,.045)}
+.project-img{height:290px;position:relative}
+.project-img img{height:100%}
+.tag{position:absolute;left:18px;top:18px;background:rgba(255,255,255,.94);padding:7px 11px;border-radius:999px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.project-body{padding:24px}
+.project-body h3{font-family:Georgia,"Times New Roman",serif;font-size:27px;margin-bottom:7px}
+.project-body p{color:var(--muted);font-size:14px;margin-bottom:18px}
+.text-link{font-weight:800;color:var(--accent-dark);font-size:14px}
+.text-link:hover{text-decoration:underline}
+
+/* PROCESS */
+.process{background:var(--soft)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#dcd6cd;border:1px solid #dcd6cd;border-radius:22px;overflow:hidden}
+.step{background:#fff;padding:27px}
+.num{font-size:12px;font-weight:900;color:var(--accent-dark);letter-spacing:1px}
+.step h3{font-family:Georgia,"Times New Roman",serif;font-size:23px;margin:12px 0 7px}
+.step p{font-size:14px;color:var(--muted)}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.price-card{border:1px solid var(--line);border-radius:24px;padding:28px;background:#fff}
+.price-card.featured{border:2px solid var(--accent);position:relative;box-shadow:var(--shadow)}
+.badge{position:absolute;right:18px;top:18px;background:var(--accent);color:#fff;padding:6px 10px;border-radius:999px;font-size:10px;font-weight:900;letter-spacing:.8px}
+.price-card h3{font-family:Georgia,"Times New Roman",serif;font-size:25px}
+.price{font-size:39px;font-weight:900;margin:8px 0 20px}
+.price small{font-size:13px;color:var(--muted);font-weight:500}
+.features{list-style:none;margin:0 0 24px}
+.features li{font-size:14px;padding:8px 0;border-bottom:1px solid #f0ede8;color:#4f5962}
+.features li:before{content:"✓";color:var(--accent-dark);font-weight:900;margin-right:8px}
+
+/* CONTACT */
+.contact{background:var(--cream)}
+.contact-box{display:grid;grid-template-columns:.9fr 1.1fr;gap:45px;align-items:start}
+.contact-info h2{margin-top:7px}
+.contact-info p{color:var(--muted);margin:12px 0 24px}
+.contact-details{display:grid;gap:10px;font-size:14px}
+.contact-details strong{display:inline-block;min-width:85px}
+.form{
+  background:#fff;border:1px solid var(--line);border-radius:25px;padding:28px;box-shadow:var(--shadow)
+}
+.form h3{font-family:Georgia,"Times New Roman",serif;font-size:27px;margin-bottom:18px}
+input,textarea,select{
+  width:100%;padding:13px 14px;border:1px solid #ddd8d0;border-radius:12px;
+  font:inherit;font-size:14px;margin-bottom:12px;outline:none;background:#fff
+}
+input:focus,textarea:focus,select:focus{border-color:var(--accent)}
+textarea{min-height:100px;resize:vertical}
+.form button{width:100%;border:0;cursor:pointer}
+.note{font-size:11px;color:#7a8178;text-align:center;margin-top:10px}
+
+/* FOOTER */
+footer{background:#11191f;color:#bfc5ca;padding:27px 0;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer strong{color:#fff}
+
+/* MOBILE */
+@media(max-width:850px){
+  nav{display:none}
+  .hero-grid,.feature-grid,.contact-box{grid-template-columns:1fr}
+  .hero{padding:52px 0}
+  .hero-photo{height:360px}
+  .offer-grid{grid-template-columns:1fr 1fr}
+  .work-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  section{padding:64px 0}
+  h2{font-size:34px}
+  h1{font-size:43px}
+  .hero-copy p{font-size:16px}
+  .offer-grid,.steps{grid-template-columns:1fr}
+  .checks{grid-template-columns:1fr}
+  .hero-photo,.feature-photo{height:310px}
+  .nav{min-height:68px}
+}
 </style>
 </head>
 <body>
-<nav class="nav">
-<a class="logo" href="#">VIBU WEB STUDIO<span>HOTEL • RESTAURANT • CAFÉ</span></a>
-<div class="links"><a href="#services">Services</a><a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
-</nav>
 
-<header class="hero">
-<div class="hero-content">
-<div class="eyebrow">Websites for Hospitality Businesses</div>
-<h1>Make your hotel or restaurant look professional online.</h1>
-<p>I create clean, modern and mobile-friendly websites for hotels, restaurants and cafés—with WhatsApp enquiries built in.</p>
-<div class="buttons"><a class="btn primary" href="#work">View My Demo</a><a class="btn outline" href="#contact">Get a Website</a></div>
-</div>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top">VIBU WEB STUDIO<span>HOTEL • RESTAURANT • CAFÉ</span></a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a class="nav-cta" href="#contact">Get a Website</a>
+    </nav>
+  </div>
 </header>
 
-<section id="services">
-<div class="head"><h2>What I Create</h2><p>Simple websites designed to help local hospitality businesses present their services and receive customer enquiries.</p></div>
-<div class="features">
-<div class="feature"><div class="icon">🏨</div><h3>Hotel Websites</h3><p>Rooms, amenities, photos, location and booking enquiry.</p></div>
-<div class="feature"><div class="icon">🍽️</div><h3>Restaurant Websites</h3><p>Digital menu, gallery, contact details and enquiry options.</p></div>
-<div class="feature"><div class="icon">📱</div><h3>Mobile Friendly</h3><p>Designed to look good on phones, tablets and computers.</p></div>
-<div class="feature"><div class="icon">💬</div><h3>WhatsApp Enquiry</h3><p>Customers can send an enquiry directly through WhatsApp.</p></div>
-</div>
+<main id="top">
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Websites for Hospitality Businesses</div>
+      <h1>Make your hotel or restaurant look professional online.</h1>
+      <p>I create clean, modern and mobile-friendly websites for hotels, restaurants and cafés—with WhatsApp enquiries built in.</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="#work">View My Demo</a>
+        <a class="btn btn-outline" href="#contact">Get a Website</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85" alt="Modern hotel exterior">
+      <div class="photo-label">Clean design • Mobile friendly • WhatsApp enquiry</div>
+    </div>
+  </div>
 </section>
 
-<section class="about">
-<div class="about-grid">
-<img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1000&q=85" alt="Professional hotel website example">
-<div><h2>A website that works for your business.</h2><p>Your customers often search online before visiting. A professional website gives them one place to see your rooms, menu, photos, services, location and contact information.</p>
-<div class="checks"><div>✓ Custom business information</div><div>✓ Photo gallery</div><div>✓ Menu / services section</div><div>✓ WhatsApp contact button</div><div>✓ Google Maps / location section</div></div></div>
-</div>
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">What I Create</div>
+      <h2>Simple websites designed for real hospitality businesses.</h2>
+      <p>Show customers your rooms, menu, photos, services, location and contact information in one professional place.</p>
+    </div>
+    <div class="offer-grid">
+      <a class="card" href="#contact"><div class="icon">🏨</div><h3>Hotel Websites</h3><p>Rooms, amenities, photos, location and booking enquiry.</p></a>
+      <a class="card" href="#contact"><div class="icon">🍽️</div><h3>Restaurant Websites</h3><p>Digital menu, gallery, contact details and enquiry options.</p></a>
+      <a class="card" href="#contact"><div class="icon">📱</div><h3>Mobile Friendly</h3><p>Designed to look good on phones, tablets and computers.</p></a>
+      <a class="card" href="#contact"><div class="icon">💬</div><h3>WhatsApp Enquiry</h3><p>Customers can send an enquiry directly through WhatsApp.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="container feature-grid">
+    <div class="feature-photo">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85" alt="Restaurant interior">
+    </div>
+    <div>
+      <div class="kicker">A Website That Works</div>
+      <h2>A professional online presence for your business.</h2>
+      <p>Your customers often search online before visiting. Give them one place to understand what you offer and contact you quickly.</p>
+      <div class="checks">
+        <div class="check"><b>✓</b>Custom business information</div>
+        <div class="check"><b>✓</b>Photo gallery</div>
+        <div class="check"><b>✓</b>Menu / services section</div>
+        <div class="check"><b>✓</b>WhatsApp contact button</div>
+        <div class="check"><b>✓</b>Google Maps / location section</div>
+        <div class="check"><b>✓</b>Mobile-friendly layout</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="work">
-<div class="head"><h2>My Demo Work</h2><p>This is a sample project created to demonstrate how a hotel website can look.</p></div>
-<div class="projects">
-<article class="project"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1100&q=85" alt="Royal Palace hotel demo"><div class="project-body"><span class="badge">Hotel Demo</span><h3>Royal Palace Hotel & Restaurant</h3><p>Sample website featuring rooms, restaurant menu, gallery, contact information and WhatsApp booking enquiry.</p><a class="btn primary" href="#contact">Request Similar Website</a></div></article>
-<article class="project"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1100&q=85" alt="Restaurant website demo"><div class="project-body"><span class="badge">Restaurant Demo</span><h3>Modern Restaurant Concept</h3><p>A sample concept with menu, food gallery, business information and direct customer enquiry.</p><a class="btn primary" href="#contact">Request Similar Website</a></div></article>
-</div>
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">My Demo Work</div>
+      <h2>Examples of what your website can look like.</h2>
+      <p>These are sample projects created to demonstrate different hospitality website styles.</p>
+    </div>
+    <div class="work-grid">
+      <article class="project">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=85" alt="Royal Palace hotel demo">
+          <span class="tag">Hotel Demo</span>
+        </div>
+        <div class="project-body">
+          <h3>Royal Palace Hotel & Restaurant</h3>
+          <p>Sample website featuring rooms, restaurant menu, gallery, contact information and WhatsApp booking enquiry.</p>
+          <a class="text-link" href="#contact">Request Similar Website →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85" alt="Modern restaurant demo">
+          <span class="tag">Restaurant Demo</span>
+        </div>
+        <div class="project-body">
+          <h3>Modern Restaurant Concept</h3>
+          <p>A sample concept with menu, food gallery, business information and direct customer enquiry.</p>
+          <a class="text-link" href="#contact">Request Similar Website →</a>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
 
 <section class="process">
-<div class="head"><h2>How It Works</h2><p>A straightforward process from enquiry to delivery.</p></div>
-<div class="steps">
-<div class="step"><div class="num">01</div><h3>Discuss</h3><p>Tell me about your hotel, restaurant or café.</p></div>
-<div class="step"><div class="num">02</div><h3>Design</h3><p>I prepare the website layout using your business details and photos.</p></div>
-<div class="step"><div class="num">03</div><h3>Review</h3><p>You check the demo and request changes.</p></div>
-<div class="step"><div class="num">04</div><h3>Deliver</h3><p>The final website is prepared for your business.</p></div>
-</div>
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">How It Works</div>
+      <h2>A straightforward process from enquiry to delivery.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h3>Discuss</h3><p>Tell me about your hotel, restaurant or café.</p></div>
+      <div class="step"><div class="num">02</div><h3>Design</h3><p>I prepare the website layout using your business details and photos.</p></div>
+      <div class="step"><div class="num">03</div><h3>Review</h3><p>You check the demo and request changes.</p></div>
+      <div class="step"><div class="num">04</div><h3>Deliver</h3><p>The final website is prepared for your business.</p></div>
+    </div>
+  </div>
 </section>
 
 <section id="pricing">
-<div class="head"><h2>Simple Packages</h2><p>Demo pricing for presenting your service. Final pricing can be customized for each client.</p></div>
-<div class="pricing">
-<div class="plan"><h3>Starter</h3><div class="amount">₹999</div><ul><li>✓ One-page website</li><li>✓ Mobile-friendly design</li><li>✓ WhatsApp button</li><li>✓ Contact details</li></ul><a class="btn primary" href="#contact">Enquire</a></div>
-<div class="plan featured"><h3>Business</h3><div class="amount">₹1,999</div><ul><li>✓ Multiple sections</li><li>✓ Menu / services</li><li>✓ Photo gallery</li><li>✓ WhatsApp enquiry</li><li>✓ Location section</li></ul><a class="btn primary" href="#contact">Enquire</a></div>
-<div class="plan"><h3>Premium</h3><div class="amount">₹3,999</div><ul><li>✓ Complete website</li><li>✓ Multiple pages</li><li>✓ Custom design</li><li>✓ Booking / enquiry flow</li><li>✓ Gallery + menu</li></ul><a class="btn primary" href="#contact">Enquire</a></div>
-</div>
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Simple Packages</div>
+      <h2>Choose a package that fits your business.</h2>
+      <p>Demo pricing for presenting your service. Final pricing can be customized for each client.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Starter</h3><div class="price">₹999</div>
+        <ul class="features">
+          <li>One-page website</li><li>Mobile-friendly design</li><li>WhatsApp button</li><li>Contact details</li>
+        </ul>
+        <a class="btn btn-outline" href="#contact">Enquire</a>
+      </div>
+      <div class="price-card featured">
+        <span class="badge">POPULAR</span>
+        <h3>Business</h3><div class="price">₹1,999</div>
+        <ul class="features">
+          <li>Multiple sections</li><li>Menu / services</li><li>Photo gallery</li><li>WhatsApp enquiry</li><li>Location section</li>
+        </ul>
+        <a class="btn btn-primary" href="#contact">Enquire</a>
+      </div>
+      <div class="price-card">
+        <h3>Premium</h3><div class="price">₹3,999</div>
+        <ul class="features">
+          <li>Complete website</li><li>Multiple pages</li><li>Custom design</li><li>Booking / enquiry flow</li><li>Gallery + menu</li>
+        </ul>
+        <a class="btn btn-outline" href="#contact">Enquire</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="contact" class="contact">
-<div class="head"><h2>Let's Build Your Website</h2><p>Send your business details and I'll discuss the website you need.</p></div>
-<div class="contact-grid">
-<div><h2>Vibu Web Studio</h2><p>📍 Karnataka, India</p><p>💬 WhatsApp: +91 63610 54026</p><p>✉️ Email: vibuwebstudio@gmail.com</p><p>Available for hotel, restaurant and café website projects.</p></div>
-<form class="contact-card" onsubmit="sendWhatsApp(event)"><h3>Quick Enquiry</h3><input id="name" required placeholder="Your name"><input id="business" required placeholder="Hotel / Restaurant name"><input id="phone" placeholder="Phone number"><textarea id="need" rows="4" placeholder="What kind of website do you need?"></textarea><button class="btn primary" type="submit">Send Enquiry on WhatsApp</button></form>
-</div>
+  <div class="container contact-box">
+    <div class="contact-info">
+      <div class="kicker">Let's Build Your Website</div>
+      <h2>Ready to put your business online?</h2>
+      <p>Send your business details and I'll discuss the website you need.</p>
+      <div class="contact-details">
+        <div><strong>Studio</strong> Vibu Web Studio</div>
+        <div><strong>Location</strong> Karnataka, India</div>
+        <div><strong>WhatsApp</strong> +91 63610 54026</div>
+        <div><strong>Email</strong> vibuwebstudio@gmail.com</div>
+      </div>
+    </div>
+
+    <div class="form">
+      <h3>Quick Enquiry</h3>
+      <form id="enquiryForm">
+        <input id="name" type="text" placeholder="Your name" required>
+        <input id="business" type="text" placeholder="Hotel / Restaurant name" required>
+        <input id="phone" type="tel" placeholder="Phone number" required>
+        <select id="need" required>
+          <option value="">What kind of website do you need?</option>
+          <option>Hotel website</option>
+          <option>Restaurant website</option>
+          <option>Café website</option>
+          <option>Hotel + Restaurant website</option>
+          <option>Other</option>
+        </select>
+        <textarea id="message" placeholder="Anything else you want to tell me? (optional)"></textarea>
+        <button class="btn btn-primary" type="submit">Send Enquiry on WhatsApp</button>
+        <div class="note">The button opens WhatsApp with your enquiry message ready to send.</div>
+      </form>
+    </div>
+  </div>
 </section>
-<footer>© 2026 Vibu Web Studio • Demo portfolio website</footer>
-<a class="whatsapp" href="https://wa.me/916361054026?text=Hello%20Vivek%20Web%20Studio%2C%20I%20am%20interested%20in%20a%20website." target="_blank" aria-label="WhatsApp">☏</a>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 <strong>Vibu Web Studio</strong> • Demo portfolio website</div>
+    <div>Hotel • Restaurant • Café Websites</div>
+  </div>
+</footer>
+
 <script>
-function sendWhatsApp(e){
-e.preventDefault();
-const n=document.getElementById('name').value,b=document.getElementById('business').value,p=document.getElementById('phone').value,w=document.getElementById('need').value;
-const text=`Hello Vibu Web Studio. My name is ${n}. Business: ${b}. Phone: ${p}. Website requirement: ${w}`;
-window.open('https://wa.me/916361054026?text='+encodeURIComponent(text),'_blank');
-}
+document.getElementById("enquiryForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const n = document.getElementById("name").value.trim();
+  const b = document.getElementById("business").value.trim();
+  const p = document.getElementById("phone").value.trim();
+  const w = document.getElementById("need").value;
+  const m = document.getElementById("message").value.trim();
+
+  let text = `Hello Vibu Web Studio. My name is ${n}. Business: ${b}. Phone: ${p}. Website requirement: ${w}`;
+  if(m) text += `. Additional details: ${m}`;
+
+  window.open("https://wa.me/916361054026?text=" + encodeURIComponent(text), "_blank");
+});
 </script>
 </body>
 </html>
